@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
 @*<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -68,163 +68,115 @@
             </nav>
         </header>*@
 
-    @*<div class="loading" id="preloader">
-        <div class="h-100vh d-flex align-items-center justify-content-center background-1">
-            <div class="loader">
-                <div class="line-scale-pulse-out">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+    
+
+    <main>
+        <div class="loading" id="preloader">
+            <div class="h-100vh d-flex align-items-center justify-content-center background-1">
+                <div class="loader">
+                    <div class="line-scale-pulse-out">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>*@
 
-    <div class="znav-container znav-transparent mt-4" id="znav-container">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand overflow-hidden pr-3 fs-3" asp-controller="Home" asp-action="Index">
-                    TaraDemo
-                    @*<span class="d-none d-lg-inline-block">Resort</span>*@
-                </a>
-                <button class="navbar-toggler"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#navbarNavDropdown"
-                        aria-controls="navbarNavDropdown"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    <div class="hamburger hamburger--emphatic">
-                        <div class="hamburger-box">
-                            <div class="hamburger-inner"></div>
+        <div class="znav-container znav-transparent mt-4" id="znav-container">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand overflow-hidden pr-3 fs-3" asp-controller="Home" asp-action="Index">
+                        TaraDemo
+                        @*<span class="d-none d-lg-inline-block">Resort</span>*@
+                    </a>
+                    <button class="navbar-toggler"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#navbarNavDropdown"
+                            aria-controls="navbarNavDropdown"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <div class="hamburger hamburger--emphatic">
+                            <div class="hamburger-box">
+                                <div class="hamburger-inner"></div>
+                            </div>
                         </div>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav font-2 fs-0">
+                            <li>
+                                <a asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li>
+                                <a asp-controller="Home" asp-action="Gallery">Gallery</a>
+                            </li>
+                            <li>
+                                <a href="contact.html">Contact</a>
+                            </li>
+                            <li>
+                                <a href="JavaScript:void(0)">Elements</a>
+                                <ul class="dropdown fs--1">
+                                    <li>
+                                        <a href="components-buttons.html">Buttons</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-colors.html">Colors</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-googlemap.html">Google Map</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-grid.html">Grid</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-icons.html">Icons</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-layouthelpers.html">Layout Helpers</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-modal-video.html">Modal Video</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-owlcarousal.html">Owl Carousal</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-slider.html">Slider</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-typography.html">Typography</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="text-center">
+                                <a class="pl-3 pl-lg-0 d-inline-block" href="#">
+                                    <span class="fa fa-facebook"></span>
+                                </a>
+                                <a class="pl-3 pl-lg-1 d-inline-block" href="#">
+                                    <span class="fa fa-twitter"></span>
+                                </a>
+                                <a class="pl-3 pl-lg-1 d-inline-block" href="#">
+                                    <span class="fa fa-google-plus"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="btn btn-outline-white btn-sm border-2x fw-700"
+                                   href="#"
+                                   target="Blank">Book Now</a>
+                            </li>
+                        </ul>
                     </div>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav font-2 fs-0">
-                        <li>
-                            <a href="JavaScript:void(0)">Home</a>
-                            <ul class="dropdown fs--1">
-                                <li>
-                                    <a href="index.html">Slider Header</a>
-                                </li>
-                                <li>
-                                    <a href="index--header-slider-classic.html">Slider Classic</a>
-                                </li>
-                                <li>
-                                    <a href="index--header-static.html">Static Header</a>
-                                </li>
-                                <li>
-                                    <a href="index--header-static-classic.html">Static Classic</a>
-                                </li>
-                                <li>
-                                    <a href="index--header-youtube-video.html">
-                                        Youtube Background
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index--header-youtube-video-classic.html">Youtube Classic</a>
-                                </li>
-                                <li>
-                                    <a href="index--header-selfhosted-video.html">Self-hosted Video</a>
-                                </li>
-                                <li>
-                                    <a href="index--header-selfhosted-video-classic.html">Self-hosted Classic</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="JavaScript:void(0)">Pages</a>
-                            <ul class="dropdown fs--1">
-                                <li>
-                                    <a href="gallery.html">Gallery</a>
-                                </li>
-                                <li>
-                                    <a href="amenities.html">Amenities</a>
-                                </li>
-                                <li>
-                                    <a href="packages.html">Packages</a>
-                                </li>
-                                <li>
-                                    <a href="history.html">Our History</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="contact.html">Contact</a>
-                        </li>
-                        <li>
-                            <a href="JavaScript:void(0)">Elements</a>
-                            <ul class="dropdown fs--1">
-                                <li>
-                                    <a href="components-buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="components-colors.html">Colors</a>
-                                </li>
-                                <li>
-                                    <a href="components-googlemap.html">Google Map</a>
-                                </li>
-                                <li>
-                                    <a href="components-grid.html">Grid</a>
-                                </li>
-                                <li>
-                                    <a href="components-icons.html">Icons</a>
-                                </li>
-                                <li>
-                                    <a href="components-layouthelpers.html">Layout Helpers</a>
-                                </li>
-                                <li>
-                                    <a href="components-modal-video.html">Modal Video</a>
-                                </li>
-                                <li>
-                                    <a href="components-owlcarousal.html">Owl Carousal</a>
-                                </li>
-                                <li>
-                                    <a href="components-slider.html">Slider</a>
-                                </li>
-                                <li>
-                                    <a href="components-typography.html">Typography</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="text-center">
-                            <a class="pl-3 pl-lg-0 d-inline-block" href="#">
-                                <span class="fa fa-facebook"></span>
-                            </a>
-                            <a class="pl-3 pl-lg-1 d-inline-block" href="#">
-                                <span class="fa fa-twitter"></span>
-                            </a>
-                            <a class="pl-3 pl-lg-1 d-inline-block" href="#">
-                                <span class="fa fa-google-plus"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="btn btn-outline-white btn-sm border-2x fw-700"
-                               href="#"
-                               target="Blank">Book Now</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+                </nav>
+            </div>
         </div>
-    </div>
-
-    
-        <main >
-            @RenderBody()
-        </main>
-
-    <footer class="border-top footer text-muted">
-        @*<div class="container">
-            &copy; 2023 - PhotoShoot - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>*@
+        @RenderBody()
         <section class="text-center pb-3">
-            <div class="background-holder overlay overlay-2" style="background-image:url(assets/images/footer-bg.jpg);background-position: top;"> </div>
+            <div class="background-holder overlay overlay-2" style="background-image: url(../assets/images/footer-bg.jpg); background-position: top;"> </div>
             <!--/.background-holder-->
             <div class="container">
                 <div class="row justify-content-center">
@@ -271,7 +223,14 @@
             </div>
             <!--/.container-->
         </section>
-    </footer>
+    </main>
+        
+    @*<footer class="border-top footer text-muted">*@
+        @*<div class="container">
+            &copy; 2023 - PhotoShoot - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>*@
+        
+    @*</footer>*@
     @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>*@
