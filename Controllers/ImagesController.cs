@@ -3,20 +3,24 @@ using Microsoft.AspNetCore.Authorization;
 using System.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
+using PhotoShoot.Data;
 
 namespace PhotoShoot.Controllers
 {
 	public class ImagesController : Controller
 	{
         private readonly IWebHostEnvironment _hostEnvironment;
+        private readonly ApplicationDbContext _dbContext;
 
-        public ImagesController(IWebHostEnvironment hostEnvironment)
+        public ImagesController(IWebHostEnvironment hostEnvironment, ApplicationDbContext dbContext)
 		{
             _hostEnvironment = hostEnvironment;
+            _dbContext = dbContext;
         }
 
         public IActionResult CreateImage()
         {
+            ViewBag.Categories = _dbContext.ImageCategories.ToList();
             return View();
         }
 

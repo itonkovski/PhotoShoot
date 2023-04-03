@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 namespace PhotoShoot.Models.Images
 {
-    public class ImageFormViewModel
+    public class ImageFormModel
 	{
         public string Id { get; set; }
 
