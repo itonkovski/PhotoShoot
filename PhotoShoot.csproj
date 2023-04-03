@@ -36,5 +36,9 @@
     <Folder Include="Data\Models\" />
     <Folder Include="Views\Images\" />
     <Folder Include="Models\Images\" />
+    <Folder Include="wwwroot\assets\images\tara\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\assets\images\tara\" />
   </ItemGroup>
 </Project>

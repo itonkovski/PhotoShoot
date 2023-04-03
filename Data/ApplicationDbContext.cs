@@ -28,6 +28,13 @@ public class ApplicationDbContext : IdentityDbContext
             new ImageCategory { Id = 4, Name = "Portrait" }
         // Add more categories as needed
         );
+
+        // Seed hardcoded Images data
+        modelBuilder.Entity<Image>().HasData(
+            new Image { Id = Guid.NewGuid().ToString(), Title = "Image 1", Description = "Image 1 description", ImageUrl = "../assets/images/tara/road_forest.jpg", ImageCategoryId = 1 },
+            new Image { Id = Guid.NewGuid().ToString(), Title = "Image 2", Description = "Image 2 description", ImageUrl = "../assets/images/tara/forest_grave.jpg", ImageCategoryId = 2 }
+        // Add more images as needed
+        );
     }
 }
 

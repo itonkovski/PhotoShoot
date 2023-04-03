@@ -249,6 +249,24 @@ namespace PhotoShoot.Migrations
                     b.HasIndex("ImageCategoryId");
 
                     b.ToTable("Images");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "15b91f75-6b84-43ea-8756-fa69dde0f459",
+                            Description = "Image 1 description",
+                            ImageCategoryId = 1,
+                            ImageUrl = "../assets/images/tara/road_forest.jpg",
+                            Title = "Image 1"
+                        },
+                        new
+                        {
+                            Id = "fc59411a-dc70-4c3a-a82d-7e3585f398a2",
+                            Description = "Image 2 description",
+                            ImageCategoryId = 2,
+                            ImageUrl = "../assets/images/tara/forest_grave.jpg",
+                            Title = "Image 2"
+                        });
                 });
 
             modelBuilder.Entity("PhotoShoot.Data.Models.ImageCategory", b =>

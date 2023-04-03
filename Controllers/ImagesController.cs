@@ -4,6 +4,7 @@ using System.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using PhotoShoot.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace PhotoShoot.Controllers
 {
@@ -39,6 +40,13 @@ namespace PhotoShoot.Controllers
             }
 
             return imageName;
+        }
+
+        public IActionResult AdminGallery()
+        {
+            var images = _dbContext.Images.Include(i => i.ImageCategory).ToList();
+            ViewBag.Images = images;
+            return View();
         }
     }
 }
