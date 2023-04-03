@@ -1,0 +1,56 @@
+﻿@model PhotoShoot.Models.Images.ImageFormViewModel
+@using PhotoShoot.Data.Models
+@{
+    ViewData["Title"] = "TaraDemo - Manage Images";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-controller="YourController" asp-action="AddImage" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ImageCategoryId"></label>
+        <select asp-for="ImageCategoryId" asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))" class="form-control">
+            <option value="">Select a category</option>
+        </select>
+        <span asp-validation-for="ImageCategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ImageFile"></label>
+        <input asp-for="ImageFile" type="file" class="form-control" />
+        <span asp-validation-for="ImageFile" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Image</button>
+</form>
+
+<h2>Existing Images</h2>
+
+<div class="row">
+    @foreach (var image in ViewBag.Images)
+    {
+        <div class="col-md-3">
+            <div class="card">
+                <img src="@image.ImageUrl" alt="@image.Title" class="card-img-top" />
+                <div class="card-body">
+                    <h5 class="card-title">@image.Title</h5>
+                    <p class="card-text">@image.Description</p>
+                    <a asp-controller="YourController" asp-action="EditImage" asp-route-id="@image.Id" class="btn btn-primary">Edit</a>
+                    <a asp-controller="YourController" asp-action="DeleteImage" asp-route-id="@image.Id" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

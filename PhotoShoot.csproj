@@ -11,18 +11,30 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
     <None Remove="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" />
+    <None Remove="Data\Models\" />
+    <None Remove="Views\Images\" />
+    <None Remove="Models\Images\" />
+    <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="7.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Models\" />
+    <Folder Include="Views\Images\" />
+    <Folder Include="Models\Images\" />
+  </ItemGroup>
 </Project>
