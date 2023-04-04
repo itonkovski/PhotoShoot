@@ -53,6 +53,12 @@
     {
         return (index < ViewBag.Images.Count) ? ViewBag.Images[index].Id.ToString() : "";
     }
+
+    string GetImageOnClick(int index)
+    {
+        return (index < ViewBag.Images.Count) ? $"data-toggle='modal' data-target='#imageModal-{GetImageIdOrEmpty(index)}'" : "data-add-image='true'";
+    }
+
 }
 
 
@@ -65,90 +71,155 @@
                     <div class="image-container">
                         @*<img src="@ViewBag.Images[0].ImageUrl" alt="@ViewBag.Images[0].Title" data-toggle="modal" data-target="#imageModal-@ViewBag.Images[0].Id" />*@
                         @*<img src="@GetImageUrlOrPlaceholder(0)" alt="@ViewBag.Images[0]?.Title" data-toggle="modal" data-target="#imageModal-@ViewBag.Images[0]?.Id" />*@
-                        <img src="@GetImageUrlOrPlaceholder(0)" alt="@GetImageTitleOrEmpty(0)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(0)" />
+                        @*<img src="@GetImageUrlOrPlaceholder(0)" alt="@GetImageTitleOrEmpty(0)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(0)" />*@
+                        <img src="@GetImageUrlOrPlaceholder(0)" alt="@GetImageTitleOrEmpty(0)" @Html.Raw(GetImageOnClick(0)) />
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="row">
                         <div class="col-lg-12 mb-4">
-                            @*<img src="@ViewBag.Images[1].ImageUrl" alt="@ViewBag.Images[1].Title" data-toggle="modal" data-target="#imageModal-@ViewBag.Images[1].Id" />*@
-                            @*<img src="@GetImageUrlOrPlaceholder(1)" alt="@ViewBag.Images[1]?.Title" data-toggle="modal" data-target="#imageModal-@ViewBag.Images[1]?.Id" />*@
-                            <img src="@GetImageUrlOrPlaceholder(1)" alt="@GetImageTitleOrEmpty(1)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(1)" />
+                            @*<img src="@GetImageUrlOrPlaceholder(1)" alt="@GetImageTitleOrEmpty(1)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(1)" />*@
+                            <img src="@GetImageUrlOrPlaceholder(1)" alt="@GetImageTitleOrEmpty(1)" @Html.Raw(GetImageOnClick(1)) />
+
                         </div>
                         <div class="col-lg-12 mb-4">
-                            <img src="@GetImageUrlOrPlaceholder(2)" alt="@GetImageTitleOrEmpty(2)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(2)" />
+                            @*<img src="@GetImageUrlOrPlaceholder(2)" alt="@GetImageTitleOrEmpty(2)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(2)" />*@
+                            <img src="@GetImageUrlOrPlaceholder(2)" alt="@GetImageTitleOrEmpty(2)" @Html.Raw(GetImageOnClick(2)) />
+
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6 mb-4">
-                    @*<img src="~/assets/images/feature/4.jpg" alt="" />*@
-                    @*<img src="@GetImageUrlOrPlaceholder(2)" alt="@ViewBag.Images[2]?.Title" data-toggle="modal" data-target="#imageModal-@ViewBag.Images[2]?.Id" />*@
-                    <img src="@GetImageUrlOrPlaceholder(3)" alt="@GetImageTitleOrEmpty(3)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(3)" />
+                    @*<img src="@GetImageUrlOrPlaceholder(3)" alt="@GetImageTitleOrEmpty(3)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(3)" />*@
+                    <img src="@GetImageUrlOrPlaceholder(3)" alt="@GetImageTitleOrEmpty(3)" @Html.Raw(GetImageOnClick(3)) />
                 </div>
                 <div class="col-lg-6 mb-4">
-                    <img src="@GetImageUrlOrPlaceholder(4)" alt="@GetImageTitleOrEmpty(4)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(4)" />
+                    @*<img src="@GetImageUrlOrPlaceholder(4)" alt="@GetImageTitleOrEmpty(4)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(4)" />*@
+                    <img src="@GetImageUrlOrPlaceholder(4)" alt="@GetImageTitleOrEmpty(4)" @Html.Raw(GetImageOnClick(4)) />
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-4">
                     <div class="row">
                         <div class="col-lg-12 mb-4">
-                            <img src="@GetImageUrlOrPlaceholder(5)" alt="@GetImageTitleOrEmpty(5)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(5)" />
+                            @*<img src="@GetImageUrlOrPlaceholder(5)" alt="@GetImageTitleOrEmpty(5)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(5)" />*@
+                            <img src="@GetImageUrlOrPlaceholder(5)" alt="@GetImageTitleOrEmpty(5)" @Html.Raw(GetImageOnClick(5)) />
                         </div>
                         <div class="col-lg-12 mb-4">
-                            <img src="@GetImageUrlOrPlaceholder(6)" alt="@GetImageTitleOrEmpty(6)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(6)" />
+                            @*<img src="@GetImageUrlOrPlaceholder(6)" alt="@GetImageTitleOrEmpty(6)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(6)" />*@
+                            <img src="@GetImageUrlOrPlaceholder(6)" alt="@GetImageTitleOrEmpty(6)" @Html.Raw(GetImageOnClick(6)) />
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-8 mb-4">
-                    <img src="@GetImageUrlOrPlaceholder(7)" alt="@GetImageTitleOrEmpty(7)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(7)" />
+                    @*<img src="@GetImageUrlOrPlaceholder(7)" alt="@GetImageTitleOrEmpty(7)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(7)" />*@
+                    <img src="@GetImageUrlOrPlaceholder(7)" alt="@GetImageTitleOrEmpty(7)" @Html.Raw(GetImageOnClick(7)) />
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6 mb-4">
-                    <img src="@GetImageUrlOrPlaceholder(8)" alt="@GetImageTitleOrEmpty(8)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(8)" />
+                    @*<img src="@GetImageUrlOrPlaceholder(8)" alt="@GetImageTitleOrEmpty(8)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(8)" />*@
+                    <img src="@GetImageUrlOrPlaceholder(8)" alt="@GetImageTitleOrEmpty(8)" @Html.Raw(GetImageOnClick(8)) />
                 </div>
                 <div class="col-lg-6 mb-4">
-                    <img src="@GetImageUrlOrPlaceholder(9)" alt="@GetImageTitleOrEmpty(9)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(9)" />
+                    @*<img src="@GetImageUrlOrPlaceholder(9)" alt="@GetImageTitleOrEmpty(9)" data-toggle="modal" data-target="#imageModal-@GetImageIdOrEmpty(9)" />*@
+                    <img src="@GetImageUrlOrPlaceholder(9)" alt="@GetImageTitleOrEmpty(9)" @Html.Raw(GetImageOnClick(9)) />
                 </div>
             </div>
         </div>
     </section>
 }
 
-
 @if (ViewBag.Images != null)
 {
-    foreach (var image in ViewBag.Images)
+    int count = ViewBag.Images.Count;
+    for (int i = 0; i < 10; i++)
     {
-        <div class="modal fade" id="imageModal-@image.Id" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel-@image.Id" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="imageModalLabel-@image.Id">Image: @image.Title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <img src="@image.ImageUrl" alt="@image.Title" class="img-fluid" />
-                        <div>
-                            <a asp-controller="YourController" asp-action="EditImage" asp-route-id="@image.Id" class="btn btn-primary">Edit</a>
-                            <a asp-controller="YourController" asp-action="DeleteImage" asp-route-id="@image.Id" class="btn btn-danger">Delete</a>
-                        </div>
-                        <div class="add-image">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addImageModal">
-                                Add Image
+        if (i < count)
+        {
+            var image = ViewBag.Images[i];
+            <div class="modal fade" id="imageModal-@image.Id" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel-@image.Id" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="imageModalLabel-@image.Id">Image: @image.Title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
                             </button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="@image.ImageUrl" alt="@image.Title" class="img-fluid" />
+                            <div>
+                                <a asp-controller="YourController" asp-action="EditImage" asp-route-id="@image.Id" class="btn btn-primary">Edit</a>
+                                <a asp-controller="YourController" asp-action="DeleteImage" asp-route-id="@image.Id" class="btn btn-danger">Delete</a>
+                            </div>
+                            <div class="add-image">
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addImageModal">
+                                    Add Image
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <div class="modal fade" id="imageModal-empty" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel-empty" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="imageModalLabel-empty">No Image</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="add-image">
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addImageModal">
+                                    Add Image
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
     }
 }
+
+@*@if (ViewBag.Images != null)
+    {
+        foreach (var image in ViewBag.Images)
+        {
+            <div class="modal fade" id="imageModal-@image.Id" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel-@image.Id" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="imageModalLabel-@image.Id">Image: @image.Title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="@image.ImageUrl" alt="@image.Title" class="img-fluid" />
+                            <div>
+                                <a asp-controller="YourController" asp-action="EditImage" asp-route-id="@image.Id" class="btn btn-primary">Edit</a>
+                                <a asp-controller="YourController" asp-action="DeleteImage" asp-route-id="@image.Id" class="btn btn-danger">Delete</a>
+                            </div>
+                            <div class="add-image">
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addImageModal">
+                                    Add Image
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }*@
 
 <!-- Add Image Modal -->
 <div class="modal fade" id="addImageModal" tabindex="-1" role="dialog" aria-labelledby="addImageModalLabel" aria-hidden="true">
@@ -170,4 +241,13 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <script>$(document).ready(function () {
+            $('img[data-add-image="true"]').on('click', function () {
+                $('#addImageModal').modal('show');
+            });
+        });</script>
+}
+
 
