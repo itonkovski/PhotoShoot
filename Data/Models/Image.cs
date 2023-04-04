@@ -32,6 +32,7 @@ namespace PhotoShoot.Data.Models
         [Required]
         [Display(Name = "Image Category")]
         public int ImageCategoryId { get; set; }
+
         public ImageCategory ImageCategory { get; set; }
     }
 }

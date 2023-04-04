@@ -1,0 +1,9 @@
+.image-container {
+    position: relative;
+}
+
+.add-image {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}

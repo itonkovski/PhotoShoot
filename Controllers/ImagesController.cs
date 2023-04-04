@@ -5,6 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using PhotoShoot.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Hosting;
+using PhotoShoot.Models.Images;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using PhotoShoot.Data.Models;
 
 namespace PhotoShoot.Controllers
 {
@@ -22,25 +26,56 @@ namespace PhotoShoot.Controllers
         public IActionResult CreateImage()
         {
             ViewBag.Categories = _dbContext.ImageCategories.ToList();
+            ViewBag.Images = _dbContext.Images.Include(i => i.ImageCategory).ToList(); ;
             return View();
+
         }
 
-        [HttpPost]
-        //[Authorize]
-        //[Authorize(Roles = "Admin, User")]
-        private async Task<string> CreateImage(IFormFile imageFile)
-        {
-            string imageName = new String(Path.GetFileNameWithoutExtension(imageFile.FileName).Take(100).ToArray()).Replace(' ', '-');
-            imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(imageFile.FileName);
-            var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "images", imageName);
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> CreateImage(ImageFormModel model)
+        //{
+        //    foreach (var key in ModelState.Keys)
+        //    {
+        //        if (ModelState[key].Errors.Count > 0)
+        //        {
+        //            Console.WriteLine($"Key: {key} - Error: {ModelState[key].Errors[0].ErrorMessage}");
+        //        }
+        //    }
+        //    if (ModelState.IsValid)
+        //    {
+        //        string uniqueFileName = null;
 
-            using (var fileStream = new FileStream(imagePath, FileMode.Create))
-            {
-                await imageFile.CopyToAsync(fileStream);
-            }
+        //        if (model.ImageFile != null)
+        //        {
+        //            string uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "assets/images/tara");
+        //            uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ImageFile.FileName;
+        //            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+        //            using (var fileStream = new FileStream(filePath, FileMode.Create))
+        //            {
+        //                await model.ImageFile.CopyToAsync(fileStream);
+        //            }
+        //        }
 
-            return imageName;
-        }
+        //        Image image = new Image
+        //        {
+        //            Title = model.Title,
+        //            Description = model.Description,
+        //            ImageCategoryId = model.ImageCategoryId,
+        //            ImageUrl = "/assets/images/tara/" + uniqueFileName
+        //        };
+
+        //        _dbContext.Add(image);
+        //        await _dbContext.SaveChangesAsync();
+
+        //        return RedirectToAction(nameof(AdminGallery));
+        //    }
+
+        //    // If the model state is not valid, repopulate the ViewBag.Categories and return the view
+        //    ViewBag.Categories = new SelectList(await _dbContext.ImageCategories.ToListAsync(), "Id", "Name");
+        //    return View(model);
+        //}
+
 
         public IActionResult AdminGallery()
         {
