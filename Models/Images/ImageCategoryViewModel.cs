@@ -1,7 +1,7 @@
 ﻿using System;
 namespace PhotoShoot.Models.Images
 {
-	public class ImageFormViewModel
+	public class ImageCategoryViewModel
 	{
         public int ImageCategoryId { get; set; }
 

@@ -13,12 +13,10 @@ namespace PhotoShoot.Data.Models
         }
 
         public string Id { get; set; }
-
-        [Required]
+        
         [Display(Name = "Image Title")]
         public string Title { get; set; }
 
-        [Required]
         [Display(Name = "Image URL")]
         public string ImageUrl { get; set; }
 
@@ -29,7 +27,6 @@ namespace PhotoShoot.Data.Models
         [Display(Name = "Description")]
         public string Description { get; set; }
 
-        [Required]
         [Display(Name = "Image Category")]
         public int ImageCategoryId { get; set; }
 

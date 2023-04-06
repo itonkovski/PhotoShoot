@@ -45,10 +45,12 @@
     {
         return (index < ViewBag.Images.Count) ? ViewBag.Images[index].ImageUrl : "../assets/images/tara/no_image_available.jpeg";
     }
+
     string GetImageTitleOrEmpty(int index)
     {
         return (index < ViewBag.Images.Count) ? ViewBag.Images[index].Title : "";
     }
+
     string GetImageIdOrEmpty(int index)
     {
         return (index < ViewBag.Images.Count) ? ViewBag.Images[index].Id.ToString() : "";
@@ -233,6 +235,9 @@
             </div>
             <div class="modal-body">
                 <!-- Add your image form here -->
+                <div>
+                    <a href="#" class="btn btn-outline-dark">Add Image</a>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
