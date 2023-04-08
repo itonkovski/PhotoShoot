@@ -16,6 +16,8 @@
     <None Remove="Models\Images\" />
     <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
     <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="Services\" />
+    <None Remove="Services\Images\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -37,6 +39,8 @@
     <Folder Include="Views\Images\" />
     <Folder Include="Models\Images\" />
     <Folder Include="wwwroot\assets\images\tara\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\assets\images\tara\" />
