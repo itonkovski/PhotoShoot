@@ -44,8 +44,23 @@ namespace PhotoShoot.Controllers
             //return View(model);
             return View(new ImageFormModel
             {
-                Categories = GetImageCategories()
+                Categories = _imageService.GetImageCategories()
             });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateImageAsync(ImageFormModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                model.Categories = _imageService.GetImageCategories();
+                return View(model);
+            }
+
+            await _imageService.CreateAsync(model, _hostEnvironment.WebRootPath);
+
+            return RedirectToAction("AdminGallery", "Images");
         }
 
         /*
@@ -109,24 +124,6 @@ namespace PhotoShoot.Controllers
         }
         */
 
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateImageAsync(ImageFormModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                model.Categories = GetImageCategories();
-                return View(model);
-            }
-
-            await _imageService.CreateAsync(model, _hostEnvironment.WebRootPath);
-
-            return RedirectToAction("AdminGallery", "Images");
-        }
-
-
-
         //With ViewBag -> working properly
         public IActionResult AdminGallery()
         {
@@ -148,17 +145,7 @@ namespace PhotoShoot.Controllers
         //{
         //    _imageService.AllImages(model);
         //    return View(model);
-        //}
-
-        public IEnumerable<ImageCategoryViewModel> GetImageCategories()
-            => this._dbContext
-                .ImageCategories
-                .Select(x => new ImageCategoryViewModel
-                {
-                    ImageCategoryId = x.Id,
-                    Name = x.Name
-                })
-                .ToList();
+        //}        
     }
 }
 

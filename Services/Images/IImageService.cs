@@ -10,6 +10,8 @@ namespace PhotoShoot.Services.Images
 		public void AllImages(AllImagesViewModel model);
 
 		Task CreateAsync(ImageFormModel model, string webRootPath);
+
+		IEnumerable<ImageCategoryViewModel> GetImageCategories();
 	}
 }
 

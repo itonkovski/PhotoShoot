@@ -76,6 +76,19 @@ namespace PhotoShoot.Services.Images
 
             return images;
         }
-    }
+
+        public IEnumerable<ImageCategoryViewModel> GetImageCategories()
+        {
+            var categories = this._dbContext
+                .ImageCategories
+                .Select(x => new ImageCategoryViewModel
+                {
+                    ImageCategoryId = x.Id,
+                    Name = x.Name
+                })
+                .ToList();
+
+            return categories;
+    }   }
 }
 
