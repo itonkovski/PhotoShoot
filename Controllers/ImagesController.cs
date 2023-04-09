@@ -15,7 +15,9 @@ using PhotoShoot.Services.Images;
 
 namespace PhotoShoot.Controllers
 {
-	public class ImagesController : Controller
+    using static WebConstants;
+
+    public class ImagesController : Controller
 	{
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly ApplicationDbContext _dbContext;
@@ -49,8 +51,17 @@ namespace PhotoShoot.Controllers
             }
 
             await _imageService.CreateAsync(model, _hostEnvironment.WebRootPath);
+            TempData[GlobalMessageKey] = "The image was added successfully.";
+            return RedirectToAction("AllAdminImages", "Images");
+        }
 
-            return RedirectToAction("AdminGallery", "Images");
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteAsync(string id)
+        {
+            await _imageService.DeleteAsync(id);
+            TempData[GlobalMessageKey] = "The image was deleted successfully.";
+            return RedirectToAction("AllAdminImages", "Images");
         }
 
         public IActionResult AllAdminImages(AllImagesViewModel model)

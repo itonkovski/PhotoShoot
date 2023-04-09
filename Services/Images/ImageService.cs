@@ -60,6 +60,14 @@ namespace PhotoShoot.Services.Images
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task DeleteAsync(string id)
+        {
+            var image = _dbContext
+                .Images.Find(id);
+            _dbContext.Images.Remove(image);
+            await _dbContext.SaveChangesAsync();
+        }
+
         public IEnumerable<ImageViewModel> GetAllImages()
         {
             var images =  _dbContext
@@ -70,7 +78,7 @@ namespace PhotoShoot.Services.Images
                     Title = image.Title,
                     ImageUrl = image.ImageUrl,
                     Description = image.Description,
-                    ImageCategory = image.ImageCategory.ToString()
+                    ImageCategory = image.ImageCategory.Name
                 })
                 .ToList();
 

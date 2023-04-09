@@ -12,6 +12,8 @@ namespace PhotoShoot.Services.Images
 		Task CreateAsync(ImageFormModel model, string webRootPath);
 
 		IEnumerable<ImageCategoryViewModel> GetImageCategories();
+
+		Task DeleteAsync(string id);
 	}
 }
 
