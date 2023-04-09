@@ -24,7 +24,7 @@ namespace PhotoShoot.Services.Images
                     Title = x.Title,
                     Description = x.Description,
                     ImageUrl = x.ImageUrl,
-                    ImageCategory = x.ImageCategory.ToString()
+                    ImageCategory = x.ImageCategory.Name
                 });
             model.Images = images;
         }

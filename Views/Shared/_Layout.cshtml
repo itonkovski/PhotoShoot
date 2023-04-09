@@ -120,31 +120,38 @@
                                 <a asp-controller="Home" asp-action="Contact">Contact</a>
                             </li>
                             <li>
-                                <a asp-controller="Images" asp-action="CreateImage">CreateImage</a>
-                            </li>
-                            <li>
-                                <a asp-controller="Images" asp-action="AdminGallery">AdminGallery</a>
-                            </li>
-                        </ul>
-                        <ul class="navbar-nav ml-auto">
-                            <li class="text-center">
-                                <a class="pl-3 pl-lg-0 d-inline-block" href="#">
-                                    <span class="fa fa-facebook"></span>
-                                </a>
-                                <a class="pl-3 pl-lg-1 d-inline-block" href="#">
-                                    <span class="fa fa-twitter"></span>
-                                </a>
-                                <a class="pl-3 pl-lg-1 d-inline-block" href="#">
-                                    <span class="fa fa-instagram"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="btn btn-outline-white btn-sm border-2x fw-700"
-                                   href="#"
-                                   target="Blank">Book Now</a>
-                            </li>
-                        </ul>
-                    </div>
+                                <a>Admin Dashboard</a>
+                                <ul class="dropdown fs--1">
+                                    <li>
+                                        <a asp-controller="Images" asp-action="CreateImage">CreateImage</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Images" asp-action="AllAdminImages">AllImages</a>
+                                    </li>
+                                </ul>
+                                    <li>
+                                        <a asp-controller="Images" asp-action="AdminGallery">AdminGallery</a>
+                                    </li>
+                                </ul>
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="text-center">
+                                        <a class="pl-3 pl-lg-0 d-inline-block" href="#">
+                                            <span class="fa fa-facebook"></span>
+                                        </a>
+                                        <a class="pl-3 pl-lg-1 d-inline-block" href="#">
+                                            <span class="fa fa-twitter"></span>
+                                        </a>
+                                        <a class="pl-3 pl-lg-1 d-inline-block" href="#">
+                                            <span class="fa fa-instagram"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn btn-outline-white btn-sm border-2x fw-700"
+                                           href="#"
+                                           target="Blank">Book Now</a>
+                                    </li>
+                                </ul>
+</div>
                 </nav>
             </div>
         </div>

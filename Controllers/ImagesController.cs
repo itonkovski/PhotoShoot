@@ -30,16 +30,6 @@ namespace PhotoShoot.Controllers
 
         public IActionResult CreateImage()
         {
-            //When using only ViewBag
-            //var model = new ImageFormModel { Categories = categories };
-            //return View(model);
-            //var model = new ImageFormModel
-            //{
-            //    Categories = _dbContext.ImageCategories
-            //        .Select(c => new ImageCategoryViewModel { ImageCategoryId = c.Id, Name = c.Name })
-            //        .ToList()
-            //};
-
             ViewBag.Images = _dbContext.Images.Include(i => i.ImageCategory).ToList();
             //return View(model);
             return View(new ImageFormModel
@@ -61,6 +51,12 @@ namespace PhotoShoot.Controllers
             await _imageService.CreateAsync(model, _hostEnvironment.WebRootPath);
 
             return RedirectToAction("AdminGallery", "Images");
+        }
+
+        public IActionResult AllAdminImages(AllImagesViewModel model)
+        {
+            _imageService.AllImages(model);
+            return View(model);
         }
 
         /*
