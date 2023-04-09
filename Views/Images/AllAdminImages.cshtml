@@ -29,15 +29,17 @@
                     <div class="card-body text-center">
                         <h5 class="card-title text-center">@image.Title (@image.ImageCategory)</h5>                      
                         <div class="d-flex justify-content-center">
-                             <a asp-controller="Images" asp-action="Edit" asp-route-id="@image.Id" class="btn btn-secondary">Edit</a>
-                             <form method="post" asp-controller="Images" asp-action="Delete" asp-route-id="@image.Id" class="ml-2">
-                                 @Html.AntiForgeryToken()
-                                 <button type="submit" class="btn btn-dark">Delete</button>
-                             </form>
-                         </div>
+                            <a asp-controller="Images" asp-action="Edit" asp-route-id="@image.Id" class="btn btn-secondary">Edit</a>
+                            <form method="post" asp-controller="Images" asp-action="Delete" asp-route-id="@image.Id" id="deleteForm" class="ml-2">
+                                @Html.AntiForgeryToken()
+                            </form>
+                            <button type="submit" data-toggle="modal" data-target="#deleteModal" class="btn btn-dark">Delete</button>
+                        </div>
                     </div>
                 </div>
             </div>
         }
     </div>
 </section>
+
+<partial name="_DeleteModalPartial" />
