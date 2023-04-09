@@ -1,4 +1,4 @@
-﻿@model AllImagesViewModel
+﻿@using PhotoShoot.Data.Models
 @{
     ViewData["Title"] = "TaraDemo - Admin Gallery";
 }
@@ -18,7 +18,7 @@
     <!--/.container-->
 </section>
 
-@*Working with the IEnumerable<ImageViewModel>*@
+@*ViewBag first solution without image structure*@
 @*<section class="sortable pt-4 pb-0">
         <div class="container-fluid px-0">
             <div class="row">
@@ -65,7 +65,7 @@
 }
 
 @*Working with AllImagesViewModel*@
-<section class="sortable pt-4 pb-0">
+@*<section class="sortable pt-4 pb-0">
         <div class="row">
             @foreach (var image in Model.Images)
             {
@@ -80,7 +80,7 @@
                 </div>
             }
         </div>
-    </section>
+    </section>*@
 
 @if (ViewBag.Images != null)
 {

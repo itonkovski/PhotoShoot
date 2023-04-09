@@ -8,6 +8,8 @@ namespace PhotoShoot.Services.Images
 		IEnumerable<ImageViewModel> GetAllImages();
 
 		public void AllImages(AllImagesViewModel model);
+
+		Task CreateAsync(ImageFormModel model, string webRootPath);
 	}
 }
 

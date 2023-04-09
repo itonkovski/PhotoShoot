@@ -30,7 +30,7 @@ namespace PhotoShoot.Controllers
 
         public IActionResult CreateImage()
         {
-            //When using ViewBag
+            //When using only ViewBag
             //var model = new ImageFormModel { Categories = categories };
             //return View(model);
             //var model = new ImageFormModel
@@ -109,92 +109,46 @@ namespace PhotoShoot.Controllers
         }
         */
 
-        
-        //CreateImageAsync without ImageSharp -> working properly
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateImageAsync(ImageFormModel model)
         {
-            //When checking for errors in the ModelState
-            //foreach (var key in ModelState.Keys)
-            //{
-            //    if (ModelState[key].Errors.Count > 0)
-            //    {
-            //        Console.WriteLine($"Key: {key} - Error: {ModelState[key].Errors[0].ErrorMessage}");
-            //    }
-            //}
-
             if (!ModelState.IsValid)
             {
                 model.Categories = GetImageCategories();
                 return View(model);
             }
 
-            // Validate the relevant properties
-            //if (string.IsNullOrEmpty(model.Title) || string.IsNullOrEmpty(model.Description) || model.ImageFile == null || model.ImageCategoryId == 0)
-            //{
-            //    model.Categories = await _dbContext.ImageCategories
-            //        .Select(c => new ImageCategoryViewModel { ImageCategoryId = c.Id, Name = c.Name })
-            //        .ToListAsync();
-
-            //    return View(model);
-            //}
-
-            // Save the uploaded file
-            var uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ImageFile.FileName;
-            var uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "assets/images/tara");
-
-            // Create the directory if it doesn't exist
-            if (!Directory.Exists(uploadsFolder))
-            {
-                Directory.CreateDirectory(uploadsFolder);
-            }
-
-            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
-            {
-                await model.ImageFile.CopyToAsync(fileStream);
-            }
-
-            // Save the image record to the database
-            var image = new Image
-            {
-                Title = model.Title,
-                Description = model.Description,
-                ImageUrl = "/assets/images/tara/" + uniqueFileName,
-                ImageCategoryId = model.ImageCategoryId,
-            };
-
-            _dbContext.Images.Add(image);
-            await _dbContext.SaveChangesAsync();
+            await _imageService.CreateAsync(model, _hostEnvironment.WebRootPath);
 
             return RedirectToAction("AdminGallery", "Images");
-
         }
 
 
+
         //With ViewBag -> working properly
-        //public IActionResult AdminGallery()
-        //{
-        //    var images = _dbContext.Images.Include(i => i.ImageCategory).ToList();
-        //    ViewBag.Images = images;
-        //    return View();
-        //}
+        public IActionResult AdminGallery()
+        {
+            var images = _dbContext.Images.Include(i => i.ImageCategory).ToList();
+            ViewBag.Images = images;
+            return View();
+        }
 
 
-        //With ImageViewModel -> working properly but not having the image structure
+        //With ImageViewModel + Service -> working properly but not having the image structure
         //public IActionResult AdminGallery()
         //{
         //    var images = _imageService.GetAllImages();
         //    return View(images);
         //}
 
-        public IActionResult AdminGallery(AllImagesViewModel model)
-        {
-            _imageService.AllImages(model);
-            return View(model);
-        }
+        //With AllImagesViewModel + Service-> working properly
+        //public IActionResult AdminGallery(AllImagesViewModel model)
+        //{
+        //    _imageService.AllImages(model);
+        //    return View(model);
+        //}
 
         public IEnumerable<ImageCategoryViewModel> GetImageCategories()
             => this._dbContext

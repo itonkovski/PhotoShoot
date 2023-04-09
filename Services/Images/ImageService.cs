@@ -1,5 +1,6 @@
 ﻿using System;
 using PhotoShoot.Data;
+using PhotoShoot.Data.Models;
 using PhotoShoot.Models.Images;
 
 namespace PhotoShoot.Services.Images
@@ -26,6 +27,37 @@ namespace PhotoShoot.Services.Images
                     ImageCategory = x.ImageCategory.ToString()
                 });
             model.Images = images;
+        }
+
+        public async Task CreateAsync(ImageFormModel model, string webRootPath)
+        {
+            // Save the uploaded file
+            var uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ImageFile.FileName;
+            var uploadsFolder = Path.Combine(webRootPath, "assets/images/tara");
+
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
+            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await model.ImageFile.CopyToAsync(fileStream);
+            }
+
+            // Save the image record to the database
+            var image = new Image
+            {
+                Title = model.Title,
+                Description = model.Description,
+                ImageUrl = "/assets/images/tara/" + uniqueFileName,
+                ImageCategoryId = model.ImageCategoryId,
+            };
+
+            _dbContext.Images.Add(image);
+            await _dbContext.SaveChangesAsync();
         }
 
         public IEnumerable<ImageViewModel> GetAllImages()
