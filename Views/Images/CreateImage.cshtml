@@ -50,7 +50,8 @@
 
 </section>
 
-@section Scripts {
+@*If not using _CreateImagePartial, and have the form directly here*@
+@*@section Scripts {
     <script>document.querySelector('#fileUploadButton').addEventListener('click', function () {
             document.querySelector('#fileUpload').click();
         });
@@ -59,5 +60,5 @@
             var fileName = e.target.files[0].name;
             document.querySelector('#selectedFile').value = fileName;
         });</script>
-}
+}*@
 

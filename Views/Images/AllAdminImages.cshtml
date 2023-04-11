@@ -27,13 +27,14 @@
                 <div class="card mb-3">
                     <img class="card-img-top" src="@image.ImageUrl" alt="@image.Title @image.Description (@image.ImageCategory.)">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-center">@image.Title (@image.ImageCategory)</h5>                      
+                        <h5 class="card-title text-center">@image.Title (@image.ImageCategory)</h5>
                         <div class="d-flex justify-content-center">
                             <a asp-controller="Images" asp-action="Edit" asp-route-id="@image.Id" class="btn btn-secondary">Edit</a>
-                            <form method="post" asp-controller="Images" asp-action="Delete" asp-route-id="@image.Id" id="deleteForm" class="ml-2">
-                                @Html.AntiForgeryToken()
-                            </form>
-                            <button type="submit" data-toggle="modal" data-target="#deleteModal" class="btn btn-dark">Delete</button>
+                            @*<form method="post" asp-controller="Images" asp-action="Delete" asp-route-id="@image.Id" id="deleteForm" class="ml-2">
+                                    @Html.AntiForgeryToken()
+                                </form>*@
+                            @*<button type="submit" data-toggle="modal" data-target="#deleteModal" class="btn btn-dark">Delete</button>*@
+                            <button type="button" data-toggle="modal" data-target="#deleteModal" class="btn btn-dark delete-btn" data-image-id="@image.Id">Delete</button>
                         </div>
                     </div>
                 </div>
@@ -41,5 +42,15 @@
         }
     </div>
 </section>
+
+@section Scripts{
+
+    <script>document.querySelectorAll('.delete-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var imageId = btn.getAttribute('data-image-id');
+                document.querySelector('#imageId').value = imageId;
+            });
+        });</script>
+}
 
 <partial name="_DeleteModalPartial" />

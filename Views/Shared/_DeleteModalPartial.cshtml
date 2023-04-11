@@ -11,3 +11,8 @@
         </div>
     </div>
 </div>
+
+<form method="post" asp-controller="Images" asp-action="Delete" id="deleteForm" class="ml-2">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" id="imageId" />
+</form>
