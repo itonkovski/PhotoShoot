@@ -136,7 +136,13 @@ namespace PhotoShoot.Controllers
         {
             var images = _dbContext.Images.Include(i => i.ImageCategory).ToList();
             ViewBag.Images = images;
-            return View();
+
+            var model = new ImageFormModel
+            {
+                Categories = _imageService.GetImageCategories()
+            };
+
+            return View(model);
         }
 
 

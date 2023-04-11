@@ -1,0 +1,49 @@
+﻿@model ImageFormModel
+@Html.AntiForgeryToken()
+<div class="form-group">
+    <label asp-for="Title"></label>
+    <input asp-for="Title" class="form-control" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Description"></label>
+    <textarea asp-for="Description" class="form-control"></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="ImageCategoryId">Category</label>
+    <select class="form-control selectpicker" id="ImageCategoryId" name="ImageCategoryId">
+        <option>Select a category</option>
+        @foreach (var category in Model.Categories)
+        {
+            <option value="@category.ImageCategoryId">@category.Name</option>
+        }
+    </select>
+    <span asp-validation-for="ImageCategoryId" class="small text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="ImageFile">Upload Image</label>
+    <div class="input-group">
+        <input type="text" class="form-control" id="selectedFile" readonly>
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="fileUploadButton">Browse</button>
+        </div>
+        <input asp-for="ImageFile" type="file" class="d-none" id="fileUpload">
+        <span asp-validation-for="ImageFile" class="text-danger"></span>
+    </div>
+</div>
+<button type="submit" class="btn btn-primary">Add Image</button>
+
+<script>document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('#fileUploadButton').addEventListener('click', function () {
+            document.querySelector('#fileUpload').click();
+        });
+
+        document.querySelector('#fileUpload').addEventListener('change', function (e) {
+            var fileName = e.target.files[0].name;
+            document.querySelector('#selectedFile').value = fileName;
+        });
+    });</script>

@@ -1,4 +1,5 @@
 ﻿@using PhotoShoot.Data.Models
+@model ImageFormModel
 @{
     ViewData["Title"] = "TaraDemo - Admin Gallery";
 }
@@ -212,37 +213,6 @@
     }
 }
 
-@*@if (ViewBag.Images != null)
-    {
-        foreach (var image in ViewBag.Images)
-        {
-            <div class="modal fade" id="imageModal-@image.Id" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel-@image.Id" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="imageModalLabel-@image.Id">Image: @image.Title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="@image.ImageUrl" alt="@image.Title" class="img-fluid" />
-                            <div>
-                                <a asp-controller="YourController" asp-action="EditImage" asp-route-id="@image.Id" class="btn btn-primary">Edit</a>
-                                <a asp-controller="YourController" asp-action="DeleteImage" asp-route-id="@image.Id" class="btn btn-danger">Delete</a>
-                            </div>
-                            <div class="add-image">
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addImageModal">
-                                    Add Image
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }
-    }*@
-
 <!-- Add Image Modal -->
 <div class="modal fade" id="addImageModal" tabindex="-1" role="dialog" aria-labelledby="addImageModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -255,13 +225,13 @@
             </div>
             <div class="modal-body">
                 <!-- Add your image form here -->
-                <div>
-                    <a href="#" class="btn btn-outline-dark">Add Image</a>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                @*<div>
+                     <a href="#" class="btn btn-outline-dark">Add Image</a>
+                </div>*@
+                <form asp-controller="Images" asp-action="CreateImage" method="post" enctype="multipart/form-data">
+                    <partial name="_CreateImagePartial" model="Model" />
+                </form>
+
             </div>
         </div>
     </div>
