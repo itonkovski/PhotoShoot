@@ -169,9 +169,13 @@
                         </div>
                         <div class="modal-body">
                             <img src="@image.ImageUrl" alt="@image.Title" class="img-fluid" />
-                            <div>
-                                <a asp-controller="YourController" asp-action="EditImage" asp-route-id="@image.Id" class="btn btn-primary">Edit</a>
-                                <a asp-controller="YourController" asp-action="DeleteImage" asp-route-id="@image.Id" class="btn btn-danger">Delete</a>
+                            <div class="card-body text-center">
+                                @*<a asp-controller="YourController" asp-action="EditImage" asp-route-id="@image.Id" class="btn btn-primary">Edit</a>*@
+                                @*<a asp-controller="Images" asp-action="DeleteImage" asp-route-id="@image.Id" class="btn btn-danger">Delete</a>*@
+                                <form method="post" asp-controller="Images" asp-action="Delete" asp-route-id="@image.Id" id="deleteForm" class="ml-2">
+                                    @Html.AntiForgeryToken()
+                                </form>
+                                <button type="submit" data-toggle="modal" data-target="#deleteModal" class="btn btn-dark">Delete</button>
                             </div>
                             @*<div class="add-image">
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addImageModal">
@@ -271,4 +275,4 @@
         });</script>
 }
 
-
+<partial name="_DeleteModalPartial" />
