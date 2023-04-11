@@ -22,76 +22,8 @@
 
 <section class="sortable pt-4 pb-0">
     <form asp-controller="Images" asp-action="CreateImage" method="post" enctype="multipart/form-data">
-        @Html.AntiForgeryToken()
-        <div class="form-group">
-            <label asp-for="Title"></label>
-            <input asp-for="Title" class="form-control" />
-            <span asp-validation-for="Title" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Description"></label>
-            <textarea asp-for="Description" class="form-control"></textarea>
-            <span asp-validation-for="Description" class="text-danger"></span>
-        </div>
-
-        @*<div class="form-group">
-            <label asp-for="ImageCategoryId">Category</label>
-            <select class="form-control" asp-for="ImageCategoryId" style="height: 50px;">
-                <option value="">Select a category</option>
-                @foreach (var category in Model.Categories)
-                {
-                    <option value="@category.ImageCategoryId">@category.Name</option>
-                }
-            </select>
-            <span asp-validation-for="ImageCategoryId" class="text-danger"></span>
-        </div>*@
-
-        <div class="form-group">
-            <label asp-for="ImageCategoryId">Category</label>
-            <select class="form-control selectpicker" id="ImageCategoryId" name="ImageCategoryId">
-                <option>Select a category</option>
-                @foreach (var category in Model.Categories)
-                {
-                    <option value="@category.ImageCategoryId">@category.Name</option>
-                }
-            </select>
-            <span asp-validation-for="ImageCategoryId" class="small text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="ImageFile">Upload Image</label>
-            <div class="input-group">
-                <input type="text" class="form-control" id="selectedFile" readonly>
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="fileUploadButton">Browse</button>
-                </div>
-                <input asp-for="ImageFile" type="file" class="d-none" id="fileUpload">
-                <span asp-validation-for="ImageFile" class="text-danger"></span>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Add Image</button>
+        <partial name="_CreateImagePartial" model="Model" />
     </form>    
-
-    @*<div class="row">
-        @if (ViewBag.Images != null)
-        {
-            foreach (var image in ViewBag.Images)
-            {
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="@image.ImageUrl" alt="@image.Title" class="card-img-top" />
-                        <div class="card-body">
-                            <h5 class="card-title">@image.Title</h5>
-                            <p class="card-text">@image.Description</p>-->
-                                <a asp-controller="YourController" asp-action="EditImage" asp-route-id="@image.Id" class="btn btn-primary">Edit</a>
-                                <a asp-controller="YourController" asp-action="DeleteImage" asp-route-id="@image.Id" class="btn btn-danger">Delete</a>
-                        </div>
-                    </div>
-                </div>
-            }
-        }
-    </div>*@
 
     <section class="sortable pt-4 pb-0">
         <div class="container-fluid px-0">
