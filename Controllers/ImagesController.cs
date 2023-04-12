@@ -28,8 +28,9 @@ namespace PhotoShoot.Controllers
             _hostEnvironment = hostEnvironment;
             _dbContext = dbContext;
             _imageService = imageService;
-        }        
+        }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateImage()
         {
             ViewBag.Images = _dbContext.Images.Include(i => i.ImageCategory).ToList();
@@ -42,6 +43,7 @@ namespace PhotoShoot.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateImageAsync(ImageFormModel model)
         {
             if (!ModelState.IsValid)
@@ -57,6 +59,7 @@ namespace PhotoShoot.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteAsync(string id)
         {
             await _imageService.DeleteAsync(id);
@@ -64,6 +67,7 @@ namespace PhotoShoot.Controllers
             return RedirectToAction("AllAdminImages", "Images");
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult AllAdminImages(AllImagesViewModel model)
         {
             _imageService.AllImages(model);
@@ -132,6 +136,8 @@ namespace PhotoShoot.Controllers
         */
 
         //With ViewBag -> working properly
+        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult AdminGallery()
         {
             var images = _dbContext.Images.Include(i => i.ImageCategory).ToList();
